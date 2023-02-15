@@ -4,7 +4,7 @@
 	
 	Default cooldown (per user) is 3 mins (180), for no limit set it to 0.
 	
-	See https://github.com/Samillion/yagpdb-cc for more information.
+	See https://github.com/Samillion/yagpdb-slap for more information.
 */}}
 {{ $usage := "```Usage: -slap @user```" }}
 {{ $args := parseArgs 1 $usage (carg "userid" "User ID or mention") }}
