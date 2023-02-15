@@ -14,7 +14,7 @@ Embed will match the user's role color, thanks to [buthed010203](https://yagpdb-
 - Login to YAGPDB dashboard. (https://yagpdb.xyz/manage)
 - Navigate: Core -> Custom Commands -> Create a new custom command.
 - Trigger: `slap`
-- Copy and paste [slap.go](https://github.com/Samillion/yagpdb-cc/blob/main/slap.go) code in the response field.
+- Copy and paste [slap](https://github.com/Samillion/yagpdb-slap/blob/main/slap.go) code in the response field.
 - Save.
 
 Preview:
