@@ -1,6 +1,6 @@
+{{ $cooldown := 180 }}
 {{ $usage := "```Usage: -slap @user```" }}
 {{ $args := parseArgs 1 $usage (carg "userid" "User ID or mention") }}
-{{ $cooldown := 180 }}
 {{ $user := .User.ID }}
 {{ $target := ($args.Get 0) }}
 {{ if getMember $target }}
