@@ -1,19 +1,9 @@
-{{/*
-	A basic slap command for meaningless fun purposes.
-	Usage: -slap @user
-	
-	Default cooldown (per user) is 3 mins (180), for no limit set it to 0.
-	
-	See https://github.com/Samillion/yagpdb-slap for more information.
-*/}}
 {{ $usage := "```Usage: -slap @user```" }}
 {{ $args := parseArgs 1 $usage (carg "userid" "User ID or mention") }}
 {{ $cooldown := 180 }}
 {{ $user := .User.ID }}
-{{ $target := $args.Get 0 }}
+{{ $target := ($args.Get 0) }}
 {{ if getMember $target }}
-	{{ $userNick := (getMember $user).Nick }}
-	{{ $targetNick := (getMember $target).Nick }}
 	{{ if not (dbGet $user "slap") }}
 		{{ if gt $cooldown 0 }}
 			{{ dbSetExpire $user "slap" "cooldown" $cooldown }}
@@ -29,15 +19,14 @@
 			"https://media.tenor.com/eU5H6GbVjrcAAAAC/slap-jjk.gif"
 		}}
 		{{ $image := index $images (randInt (len $images)) }}
-		{{ $desc := (print "**" $userNick "** slapped **" $targetNick "**.") }}
+		{{ $desc := (print "<@" $user "> slapped <@" $target ">.") }}
 		{{ if eq $target $user }}
-			{{ $desc = (print "**" $userNick "**, why are you slapping yourself?") }}
+			{{ $desc = (print "<@" $user ">, why are you slapping yourself?") }}
 			{{ $image = "https://media.tenor.com/rwipJN-E7okAAAAC/slap-slapping-self.gif" }}
 		{{ else if eq $target 204255221017214977 }}
-			{{ $desc = (print "**" $userNick "**, you think you can slap me? :rofl:") }}
+			{{ $desc = (print "<@" $user ">, you think you can slap me? :rofl:") }}
 			{{ $image = "https://media.tenor.com/J9flx980Ot4AAAAC/reggie-deflecting-criticism.gif" }}
 		{{ end }}
-		{{/* Get user color: <https://yagpdb-cc.github.io/code-snippets/get-username-color> - Start */}}
 		{{ $col := 16777215 }}
 		{{ $p := 0 }}
 		{{ $r := .Member.Roles }}
@@ -47,7 +36,6 @@
 				{{- $col = .Color }}
 			{{- end -}}
 		{{- end }}
-		{{/* Get user color - End */}}
 		{{ $embed := cembed 
 			"description" $desc
 			"image" (sdict "url" $image)
