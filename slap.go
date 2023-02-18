@@ -1,15 +1,9 @@
 {{/*
 	A basic slap command for meaningless fun purposes.
 	
-	Default cooldown (per user) is 3 mins (180).
-	For no limit set $cooldown it to 0.
-	
-	See https://github.com/Samillion/yagpdb-slap for more information.
-	
-	$cooldown is set in seconds.
-	$images is the list of slap GIFs
-	$selfSlap is the GIF shown when user slaps self.
-	$botSlap is the GIF shown when YAGPDB bot is slapped.
+	See <https://github.com/Samillion/yagpdb-slap> for more information.
+
+	Author: Samillion <https://github.com/Samillion>
 */}}
 
 {{/* Adjust cooldown and GIFs (direct links) */}}
