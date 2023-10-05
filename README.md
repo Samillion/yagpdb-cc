@@ -42,7 +42,7 @@ https://media.tenor.com/eU5H6GbVjrcAAAAC/slap-jjk.gif
 https://media.tenor.com/rwipJN-E7okAAAAC/slap-slapping-self.gif
 ```
 
-`botSlap` is the GIF shown when a user slaps YAGPDB bot. Predefined bot slap GIF:
+`$botSlap` is the GIF shown when a user slaps YAGPDB bot. Predefined bot slap GIF:
 ```
 https://media.tenor.com/J9flx980Ot4AAAAC/reggie-deflecting-criticism.gif
 ```
