@@ -17,7 +17,7 @@ Embed will match the user's role color, thanks to [buthed010203](https://yagpdb-
 
 ## Modify
 Cooldown: (`$cooldown`)
-- By default it is set to 180 seconds (3 minutes), per user.
+- By default it is set to 30 seconds, per user.
 - If set to 0, there is no cooldown limit
 
 GIFs: (`$images`)
@@ -49,4 +49,5 @@ https://media.tenor.com/J9flx980Ot4AAAAC/reggie-deflecting-criticism.gif
 
 Preview:
 
-![image](https://user-images.githubusercontent.com/17427046/218953630-ff236c9c-fcfd-4c86-be50-e9038886389b.png)
+![image](https://github.com/Samillion/yagpdb-slap/assets/17427046/9a9b35d6-cfab-413b-afea-921c9e97d664)
+
