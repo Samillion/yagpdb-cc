@@ -23,7 +23,7 @@
 {{ $usage := (print "```Usage: " .ServerPrefix "slap @user```") }}
 
 {{/* Do not edit beyond this point unless you know what you're doing. */}}
-{{ if (eq (len .Args) 2 3) }}
+{{ if gt (len .Args) 1 }}
 	{{ $user := .User.ID }}
 	{{ $target := userArg (index .CmdArgs 0) }}
 
@@ -65,7 +65,7 @@
 		}}
 		{{ sendMessage nil $embed }}
 	{{ end }}
-{{ else }}
+{{ else if le (len .Args) 1 }}
 	{{ $embed := cembed 
 		"title" "Slap Command"
 		"description" (print "Do you want to slap someone? Yourself? Then this is the perfect command for you." "\n\n" $usage)
