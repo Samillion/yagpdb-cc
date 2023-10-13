@@ -65,7 +65,7 @@
 		}}
 		{{ sendMessage nil $embed }}
 	{{ end }}
-{{ else if le (len .Args) 1 }}
+{{ else }}
 	{{ $embed := cembed 
 		"title" "Slap Command"
 		"description" (print "Do you want to slap someone? Yourself? Then this is the perfect command for you." "\n\n" $usage)
