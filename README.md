@@ -29,7 +29,7 @@ GIFs:
 - Direct links should be used there.
 - Feel free to add or remove GIFs, make sure each URL is wraped with quotes. `"URL"`
 
-Preview:
+## Preview
 
 ![image](https://github.com/Samillion/yagpdb-slap/assets/17427046/9a9b35d6-cfab-413b-afea-921c9e97d664)
 
