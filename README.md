@@ -20,7 +20,7 @@ Embed will match the user's role color, thanks to [buthed010203](https://yagpdb-
 
 ## Modify
 Cooldown: (`$cooldown`)
-- By default it is set to 30 seconds, per user, per command (ie: hug's cd is unique from spank's cd.
+- By default it is set to 30 seconds, per user and per command. (ie: hug's cd is unique from spank's cd)
 - If set to 0, there is no cooldown limit
 
 GIFs:
