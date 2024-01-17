@@ -1,11 +1,3 @@
-{{/*
-	Basic interactions for meaningless fun purposes.
-	
-	See <https://github.com/Samillion/yagpdb-fun-interactions> for more information.
-
-	Author: Samillion <https://github.com/Samillion>
-*/}}
-
 {{ $cooldown := 30 }}
 
 {{ $hugs := cslice
@@ -92,7 +84,7 @@
 	
 	{{ if $x := .Message.Mentions }}
 		{{ $target = (index $x 0).ID }}
-		{{ if (gt (len .Message.Mentions) 1) }}
+		{{ if and (gt (len $x) 1) (.Message.ReferencedMessage) }}
 			{{ $target = (index $x 1).ID }}
 		{{ end }}
 	{{ end }}
