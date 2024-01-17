@@ -92,6 +92,9 @@
 	
 	{{ if $x := .Message.Mentions }}
 		{{ $target = (index $x 0).ID }}
+		{{ if (gt (len .Message.Mentions) 1) }}
+			{{ $target = (index $x 1).ID }}
+		{{ end }}
 	{{ end }}
 	
 	{{ $target = userArg ($target) }}
