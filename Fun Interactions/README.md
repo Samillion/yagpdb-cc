@@ -15,7 +15,7 @@ Embed will match the user's role color, thanks to [buthed010203](https://yagpdb-
 - Navigate: Custom Commands -> Commands -> Create a new custom command.
 - Trigger type: Regex
 - Trigger: `^-(hug|slap|spank|fart)`
-- Copy and paste [code](https://raw.githubusercontent.com/Samillion/yagpdb-fun-interactions/main/Fun%20Interactions/funinteractions.go) in the response field.
+- Copy and paste [code](https://raw.githubusercontent.com/Samillion/yagpdb-cc/main/Fun%20Interactions/funinteractions.go) in the response field.
 - Save.
 
 ## Modify
