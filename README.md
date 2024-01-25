@@ -10,4 +10,4 @@ It's mostly specific use case scenarios, random coding out of boredom or to do t
 - Search Link
 - Fancy Text
 - User Info
-- Skyforge MMO Game commands
+- Skyforge MMO commands
