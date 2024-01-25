@@ -1,5 +1,5 @@
 # World Clock v2
-This is an "advanced" version of the [World Clock](https://yagpdb-cc.github.io/utilities/world-clock) command made by [jo3-l](https://github.com/jo3-l). It is honestly a complete overkill, but it services my lazy side on that rare time I want this informaation and I don't have to open my browser for it.
+This is an "advanced" version of the [World Clock](https://yagpdb-cc.github.io/utilities/world-clock) command made by [jo3-l](https://github.com/jo3-l). It is honestly a complete overkill, but it services my lazy side on that rare time I want this information and I don't have to open my browser for it.
 
 Features:
 - By default it will output time for regions that cover most of the globe
