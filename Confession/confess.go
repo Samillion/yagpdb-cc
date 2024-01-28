@@ -9,7 +9,7 @@
 	"- Once you use `-confess` it will post your message in the relative channel." "\n"
 	"- Your message will be deleted instantly, leaving only the anonymous one for others to read." "\n"
 	"- If the confession is less than 50 characters, nothing will be posted." "\n"
-	"- For your comfort, feel free to review the code of this command [here]()."
+	"- For your comfort, feel free to review the code of this command [here](https://github.com/Samillion/yagpdb-cc/tree/main/Confession)."
 }}
 
 {{ $main := cembed 
