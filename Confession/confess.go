@@ -6,7 +6,7 @@
 {{ $usage := print "**Usage:**" "\n" "```" $cmd " your confession```" }}
 
 {{ $explain := print 
-	"This commnd will post your message **__anonymously__** to <#" $ch ">." "\n\n"
+	"This command will post your message **__anonymously__** to <#" $ch ">." "\n\n"
 	"**Explanation:**" "\n"
 	"- Once you use `-confess` it will post your message in the relative channel." "\n"
 	"- Your message will be deleted instantly, leaving only the anonymous one for others to read." "\n"
