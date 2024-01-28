@@ -1,4 +1,4 @@
-# Confession
+# Anonymous Confessions
 A command to post messages anonymously in a dedicated confessions channel.
 
 There is a global cooldown limit per confession. The reasons it is global and not per user, is to not identify users' timestamps with the cooldown limit and to prevent spam.
