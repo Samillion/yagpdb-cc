@@ -23,6 +23,7 @@
 
 {{ if not (getChannel $ch) }}
 	{{ sendMessage nil (print "**Error:** Please edit the command code and adjust `$ch` to a valid confession channel ID.") }}
+	{{ deleteTrigger 0 }}
 	{{ return }}
 {{ end }}
 
