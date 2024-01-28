@@ -3,9 +3,11 @@ A command to post messages anonymously in a dedicated confessions channel.
 
 There is a global cooldown limit per confession. The reasons it is global and not per user, is to not identify users with confession timestamps and to prevent spam.
 
-Details:
+**Details:**
 - `$ch` should be the ID for the confessions channel.
-- `$cd` is the amount of seconds for cooldown per confession. Default is 10 minutes. (600 seconds)
+- `$cd` is the amount of seconds for cooldown per confession. Default is 600 seconds. (10 minutes)
+
+On my Discord server, I have the `#confessions` channel in read-only mode. Meaning that "Send Message" permission is disabled for everyone, to keep the channel free from clutter.
 
 ## Explanation and Preview
 
@@ -29,4 +31,4 @@ However, it is possible for server admins to be monitoring actions. Such as mess
 
 Server admins using this command should respect the privacy of their members. This can be a funny command to mess around with or a genuine outlet to unload a memory or two. Think of the bigger picture.
 
-I have no control over Discord, only what happens on my own Discord server. If you're a member in a server that has this exact command or a similar feature, then you should ask the admins directly about their privacy policy.
+I have no control over Discord, only what happens on my own Discord server. If you're a member in a server that has this exact command or a similar feature, then you should ask the admins directly about their privacy policy then decide based on the answer whether you'd like to use the confession feature on their server.
