@@ -1,11 +1,15 @@
 # Confession
 A command to post messages anonymously in a dedicated confessions channel.
 
-There is a global cooldown limit per confession set for 10 minutes. The reasons it is global and not per user, is to not identify users' timestamps with the cooldown limit and to prevent spam.
+There is a global cooldown limit per confession. The reasons it is global and not per user, is to not identify users' timestamps with the cooldown limit and to prevent spam.
+
+Details:
+- `$ch` should be the ID for the confessions channel.
+- `$cd` is the amount of seconds for cooldown per confession. Default is 10 minutes.
 
 ## Explanation and Preview
 
-![image](https://github.com/Samillion/yagpdb-cc/assets/17427046/bcafad69-803a-4192-8aae-5c69239af2c7)
+![image](https://github.com/Samillion/yagpdb-cc/assets/17427046/e09a35f3-d269-42e4-a970-8f417fb0a256)
 
 ![image](https://github.com/Samillion/yagpdb-cc/assets/17427046/4a2f9356-da2a-4a8b-8565-197186695577)
 
