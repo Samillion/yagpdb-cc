@@ -1,4 +1,4 @@
-{{ $list := split "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=#!&" "" }}
+{{ $list := split "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~!@#$%^&*()_-+={[}]<,>.?" "" }}
 {{ $text := "" }}
 {{ $amount := 15 }}
 {{ $note := "" }}
