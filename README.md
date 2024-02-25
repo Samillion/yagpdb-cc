@@ -4,11 +4,11 @@ A few custom commands I've made for [YAGPDB](https://yagpdb.xyz/) Discord bot to
 It's mostly specific use case scenarios, random coding out of boredom or to do things within Discord instead of having to do it on a browser because I'm lazy.
 
 ## Commands
-- [Anonymous Dreams](https://github.com/Samillion/yagpdb-cc/tree/main/Dreams)
-- [Fun Interactions](https://github.com/Samillion/yagpdb-cc/tree/main/Fun%20Interactions)
-- [World Clock v2](https://github.com/Samillion/yagpdb-cc/tree/main/World%20Clock%20v2)
-- [Random String](https://github.com/Samillion/yagpdb-cc/tree/main/Random%20String)
-- [Search Link](https://github.com/Samillion/yagpdb-cc/tree/main/Search%20Link)
-- [Fancy Text](https://github.com/Samillion/yagpdb-cc/tree/main/Fancy%20Text)
-- [User Info](https://github.com/Samillion/yagpdb-cc/tree/main/User%20Info)
+- [Anonymous Dreams](./Dreams)
+- [Fun Interactions](./Fun%20Interactions)
+- [World Clock v2](./World%20Clock%20v2)
+- [Random String](./Random%20String)
+- [Search Link](./Search%20Link)
+- [Fancy Text](./Fancy%20Text)
+- [User Info](./User%20Info)
 - [Skyforge MMO Info](https://github.com/Samillion/skyforge-yagpdb)
