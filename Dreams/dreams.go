@@ -3,51 +3,66 @@
 
 {{ $cmd := .Cmd }}
 {{ $msg := trimSpace .StrippedMsg }}
-{{ $usage := print "**Usage:**" "\n" "```" $cmd " your confession```" }}
+{{ $usage := print "**Usage:**" "\n" "```" $cmd " your dream```" }}
 
 {{ $explain := print 
 	"This command will post your message **__anonymously__** to <#" $ch ">." "\n\n"
 	"**Explanation:**" "\n"
-	"- Once you use `-confess` it will post your message in the relative channel." "\n"
+	"- Once you use `" $cmd "` it will post your message in the relative channel." "\n"
 	"- Your message will be deleted instantly, leaving only the anonymous one for others to read." "\n"
-	"- If the confession is less than 50 characters, nothing will be posted." "\n"
-	"- A limit of one confession every 10 minutes, globally." "\n"
+	"- If the dream is less than 20 characters, nothing will be posted." "\n"
+	"- A limit of one dream every 10 minutes, globally." "\n"
 	"- Your initial post, even if it fails (ie: on cooldown), will instantly be deleted." "\n"
-	"- For your comfort, feel free to review the code of this command [here](https://github.com/Samillion/yagpdb-cc/tree/main/Confession)."
+	"- There are **__zero logs__**, it is 100% private." "\n"
+	"- Feel free to review the code of this command [here](https://github.com/Samillion/yagpdb-cc/tree/main/Dreams)."
 }}
 
 {{ $main := cembed 
-	"title" "Confession"
+	"title" "Anonymous Dream"
 	"description" (print $explain "\n\n" $usage)
 }}
 
 {{ if not (getChannel $ch) }}
-	{{ sendMessage nil (print "**Error:** Please edit the command code and adjust `$ch` to a valid confession channel ID.") }}
+	{{ sendMessage nil (print "**Error:** Please edit the command code and adjust `$ch` to a valid channel ID.") }}
 	{{ deleteTrigger 0 }}
 	{{ return }}
 {{ end }}
 
-{{ $db := "confessions" }}
+{{ $db := "dreams" }}
 {{ $ccid := .CCID }}
 
 {{ if $msg }}
-	{{ if gt (len $msg) 50 }}
+	{{ if gt (len $msg) 20 }}
 		{{ if not (dbGet $ccid $db) }}
 			{{ $note := print "Use " $cmd " to post your own, anonymously." }}
 			{{ $embed := cembed 
-				"title" "Anonymous Confession"
+				"title" "Anonymous Dream"
 				"description" $msg 
 				"color" 8421888
 				"footer" (sdict "text" $note)
 			}}
 			{{ sendMessage $ch $embed }}
 			{{ dbSetExpire $ccid $db "cooldown" $cd }}
+			
+			{{ $cdtext := print 
+				"A global cooldown is active for 10 minutes, meaning no one can post a dream during that time." "\n\n"
+				"__This messaage will be deleted automatically when the cooldown is over__." "\n\n"
+				"**Why a global cooldown?**" "\n"
+				"If cooldown was per user, it would be a way to trace who posted the dream. A global cooldown guarantees anonymity."
+			}}
+			{{ $cdtime := cembed 
+				"title" "Cooldown"
+				"description" $cdtext
+				"color" 11993101
+			}}
+			{{ $x := sendMessageRetID nil $cdtime }}
+			{{ deleteMessage nil $x 600 }}
 		{{ else }}
 			{{ $x := sendMessageRetID nil "There is a global 10 minutes cooldown per confession." }}
 			{{ deleteMessage nil $x 10 }}
 		{{ end }}
 	{{ else }}
-		{{ $x := sendMessageRetID nil "Your confession must contain at least 50 characters." }}
+		{{ $x := sendMessageRetID nil "Your dream post must contain at least 20 characters." }}
 		{{ deleteMessage nil $x 10 }}
 	{{ end }}
 	{{ deleteTrigger 0 }}
