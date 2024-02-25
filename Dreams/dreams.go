@@ -57,8 +57,8 @@
 				"description" $cdtext
 				"color" 11993101
 			}}
-			{{ $x := sendMessageRetID nil $cdtime }}
-			{{ deleteMessage nil $x $cd }}
+			{{ $x := sendMessageRetID $ch $cdtime }}
+			{{ deleteMessage $ch $x $cd }}
 		{{ else }}
 			{{ $x := sendMessageRetID nil "There is a global 10 minutes cooldown per confession." }}
 			{{ deleteMessage nil $x 10 }}
