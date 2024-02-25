@@ -1,4 +1,5 @@
 {{ $ch := 1200964297518497903 }}
+{{ $minimum := 20 }}
 {{ $cd := 600 }}
 
 {{ $cmd := .Cmd }}
@@ -6,14 +7,15 @@
 {{ $usage := print "**Usage:**" "\n" "```" $cmd " your dream```" }}
 
 {{ $explain := print 
+	"Had an interesting dream last night? Share it with us by using this command." "\n\n"
 	"This command will post your message **__anonymously__** to <#" $ch ">." "\n\n"
 	"**Explanation:**" "\n"
 	"- Once you use `" $cmd "` it will post your message in the relative channel." "\n"
 	"- Your message will be deleted instantly, leaving only the anonymous one for others to read." "\n"
-	"- If the dream is less than 20 characters, nothing will be posted." "\n"
+	"- If the dream is less than " $minimum " characters, nothing will be posted." "\n"
 	"- A limit of one dream every 10 minutes, globally." "\n"
 	"- Your initial post, even if it fails (ie: on cooldown), will instantly be deleted." "\n"
-	"- There are **__zero logs__**, it is 100% private." "\n"
+	"- There are **__zero logs__**, it is 100% anonymous. (even Discord Audit Logs)" "\n"
 	"- Feel free to review the code of this command [here](https://github.com/Samillion/yagpdb-cc/tree/main/Dreams)."
 }}
 
@@ -32,7 +34,7 @@
 {{ $ccid := .CCID }}
 
 {{ if $msg }}
-	{{ if gt (len $msg) 20 }}
+	{{ if gt (len $msg) $minimum }}
 		{{ if not (dbGet $ccid $db) }}
 			{{ $note := print "Use " $cmd " to post your own, anonymously." }}
 			{{ $embed := cembed 
@@ -62,7 +64,7 @@
 			{{ deleteMessage nil $x 10 }}
 		{{ end }}
 	{{ else }}
-		{{ $x := sendMessageRetID nil "Your dream post must contain at least 20 characters." }}
+		{{ $x := sendMessageRetID nil (print "Your dream post must contain at least " $minimum " characters.") }}
 		{{ deleteMessage nil $x 10 }}
 	{{ end }}
 	{{ deleteTrigger 0 }}
