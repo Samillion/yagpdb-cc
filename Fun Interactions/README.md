@@ -20,13 +20,13 @@ Embed will match the user's role color, thanks to [buthed010203](https://yagpdb-
 
 ## Modify
 Cooldown: (`$cooldown`)
-- By default it is set to 30 seconds, per user and per command. (ie: hug's cd is unique from spank's cd)
+- By default it is set to 60 seconds, per user and per command. (ie: hug's cd is unique from spank's cd)
 - If set to 0, there is no cooldown limit
 
 GIFs:
 - Predefined lists (slice) of GIFs with a humorous theme.
-- Different lists for each interaction. `$hugs`, `$spanks`, `$slaps`, `$farts`.
-- Direct links should be used there.
+- Different lists for each interaction in `$type` (sdict) -> (hug|fart|slap|spank) -> `"gifs" (cslice)`.
+- Direct links should be used in `"gifs" (cslice)`.
 - Feel free to add or remove GIFs, make sure each URL is wraped with quotes. `"URL"`
 
 ## Preview
