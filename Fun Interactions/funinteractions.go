@@ -65,14 +65,17 @@
 
 {{/* Do not edit beyond this point unless you know what you're doing. */}}
 {{ $usage := print "```Usage: " .Cmd " @user```" }}
-{{ $cmd := reReplace .ServerPrefix .Cmd "" }}
-{{ $set := $type.hug }}
+{{ $cmd := slice .Cmd 1 (len .Cmd) | lower }}
+{{ $set := or ($type.Get $cmd) $type.hug }}
 
-{{ if $type.HasKey $cmd }}
-	{{ $set = $type.Get $cmd }}
-{{ end }}
+{{ $on := "" }}
+{{ if eq $cmd "fart" }}{{ $on = " on " }}{{ end }}
+{{ $embed := sdict 
+	"title" (print (title $cmd) " Command")
+	"description" (print "Do you want to " $cmd $on " someone? Then this is the perfect command for you." "\n\n" $usage)
+}}
 
-{{ if gt (len .Args) 1 }}
+{{ if .CmdArgs }}
 	{{ $user := .User.ID }}
 	{{ $target := 0 }}
 	
@@ -107,26 +110,18 @@
 					{{- $col = .Color -}}
 				{{- end -}}
 			{{- end }}
-			{{ $embed := cembed 
+			{{ $embed = sdict 
 				"description" $desc
 				"image" (sdict "url" $image)
 				"color" $col
 			}}
-			{{ sendMessage nil $embed }}
 		{{ end }}
 	{{ else }}
-		{{ $embed := cembed 
+		{{ $embed = sdict 
 			"title" "Who dis?"
 			"description" (print "Defined user is not a member in this server." "\n\n" $usage)
 		}}
-		{{ sendMessage nil $embed }}
 	{{ end }}
-{{ else }}
-	{{ $on := "" }}
-	{{ if eq $cmd "fart" }}{{ $on = " on " }}{{ end }}
-	{{ $embed := cembed 
-		"title" (print (title $cmd) " Command")
-		"description" (print "Do you want to " $cmd $on " someone? Then this is the perfect command for you." "\n\n" $usage)
-	}}
-	{{ sendMessage nil $embed }}
 {{ end }}
+
+{{ sendMessage nil (cembed $embed) }}
