@@ -1,10 +1,15 @@
 {{ $member := .Member }}
 {{ $user := .User }}
-{{ $usage := print "**Usage:** `" .Cmd " @user`" }}
-{{ $args := parseArgs 0 $usage (carg "member" "target") }}
+{{ $args := .CmdArgs }}
 
-{{ if $args.IsSet 0 }}
-	{{ $member = $args.Get 0 }}
+{{ if $args }}
+	{{ $member = getMember (index $args 0) }}
+	
+	{{ if not $member }}
+		{{ sendMessage nil "User must be a member in this server." }}
+		{{ return }}
+	{{ end }}
+	
 	{{ $user = $member.User }}
 {{ end }}
 
