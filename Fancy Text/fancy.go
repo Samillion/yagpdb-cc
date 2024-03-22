@@ -10,16 +10,16 @@
     "U" "𝒰" "V" "𝒱" "W" "𝒲" "X" "𝒳" "Y" "𝒴" "Z" "𝒵"
 }}
 
-{{ $msg := trimSpace .StrippedMsg }}
+{{ $in := trimSpace .StrippedMsg }}
 {{ $usage := print "**Usage:**" "\n" "```" .Cmd " any text you'd like```" }}
 
-{{ $main := cembed 
+{{ $message := cembed 
 	"title" "Fancy Text"
 	"description" (print "Convert any text into **𝐹𝒶𝓃𝒸𝓎 𝓉𝑒𝓍𝓉** easily." "\n\n" $usage)
 }}
 
-{{ if $msg }}
-	{{ if gt (len $msg) 500 }}
+{{ if $in }}
+	{{ if gt (len $in) 500 }}
 		{{ $explain := print 
 			"A maximum of 500 characters is allowed. Due to Discrd's handling of Unicode, there is no escaping this limit, unfortunately." "\n\n"
 			"**Explanation:**" "\n"
@@ -27,20 +27,17 @@
 			"- Discord's message limit is 2000 characters total. `2000 / 4 = 500`."
 		}}
 		
-		{{ $limit := cembed 
+		{{ $message = cembed 
 			"title" "Fancy Text"
 			"description" (print $explain "\n\n" $usage)
 		}}
+	{{ else }}
+		{{ range $old, $new := $alphanum }}
+			{{- $in = joinStr $new (split $in $old) -}}
+		{{- end }}
 
-		{{ sendMessage nil $limit }}
-		{{ return }}
+		{{ $message = $in }}
 	{{ end }}
-	
-	{{ range $old, $new := $alphanum }}
-		{{- $msg = joinStr $new (split $msg $old) -}}
-	{{- end }}
-
-	{{ sendMessage nil $msg }}
-{{ else }}
-	{{ sendMessage nil $main }}
 {{ end }}
+
+{{ sendMessage nil $message }}
