@@ -1,4 +1,4 @@
-{{ $cooldown := 60 }}
+{{ $cooldown := 0 }}
 
 {{ $type := sdict 
 	"hug" (sdict 
@@ -91,9 +91,9 @@
 	{{ if $target }}
 		{{ $target = $target.ID }}
 		{{ $db := print "fun_" $cmd }}
-		{{ if not (dbGet $user $db) }}
+		{{ if not (dbGet .CCID $db) }}
 			{{ if gt (toInt $cooldown) 0 }}
-				{{ dbSetExpire $user $db "cooldown" $cooldown }}
+				{{ dbSetExpire .CCID $db "cooldown" $cooldown }}
 			{{ end }}
 			{{ $image := index $set.gifs (randInt (len $set.gifs)) }}
 			{{ $desc := (print "<@" $user "> " $set.phrase " <@" $target ">.") }}
