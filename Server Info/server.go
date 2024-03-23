@@ -14,7 +14,7 @@
 	}}
 {{ end }}
 
-{{ $icon := .Guild.IconURL "256" }}
+{{ $icon := .Guild.IconURL "4096" }}
 {{ $owner := userArg .Guild.OwnerID }}
 {{ $createdAt := snowflakeToTime .Guild.ID }}
 
