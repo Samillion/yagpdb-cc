@@ -6,7 +6,7 @@ A simple command to view general server info. This is a fork of [Server Info](ht
 - Navigate: Custom Commands -> Commands -> Create a new custom command.
 - Trigger type: Command
 - Trigger: `server`
-- Copy and paste [code](https://raw.githubusercontent.com/Samillion/yagpdb-cc/main/Server%20Info/server.go) in the response field.
+- Copy and paste [code](https://raw.githubusercontent.com/Samillion/yagpdb-cc/main/Server%20Info/serverinfo.go) in the response field.
 - Save.
 
 ## Preview
