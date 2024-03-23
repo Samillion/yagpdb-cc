@@ -14,15 +14,9 @@
 	}}
 {{ end }}
 
-{{ $icon := "" }}
-{{ if .Guild.Icon }}
-	{{ $ext := "webp" }}
-	{{ if eq (slice .Guild.Icon 0 2) "a_" }}{{ $ext = "gif" }}{{ end }}
-	{{ $icon = printf "https://cdn.discordapp.com/icons/%d/%s.%s" .Guild.ID .Guild.Icon $ext }}
-{{ end }}
-
+{{ $icon := .Guild.IconURL "256" }}
 {{ $owner := userArg .Guild.OwnerID }}
-{{ $createdAt := div .Guild.ID 4194304 | add 1420070400000 | mult 1000000 | toDuration | (newDate 1970 1 1 0 0 0).Add }}
+{{ $createdAt := snowflakeToTime .Guild.ID }}
 
 {{ $embed := cembed
 	"thumbnail" (sdict "url" $icon)
