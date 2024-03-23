@@ -11,4 +11,5 @@ It's mostly specific use case scenarios, random coding out of boredom or to do t
 - [Search Link](./Search%20Link)
 - [Fancy Text](./Fancy%20Text)
 - [User Info](./User%20Info)
+- [Server Info](./Server%20Info)
 - [Skyforge MMO Info](https://github.com/Samillion/skyforge-yagpdb)
