@@ -14,12 +14,9 @@
 {{ end }}
 
 {{ $bot := "No" }}
+{{ if $user.Bot }}{{ $bot = "Yes" }}{{ end }}
 
-{{ if $user.Bot }}
-	{{ $bot = "Yes" }}
-{{ end }}
-
-{{ $created := div $user.ID 4194304 | add 1420070400000 | mult 1000000 | toDuration | (newDate 1970 1 1 0 0 0).Add }}
+{{ $created := snowflakeToTime $user.ID }}
 {{ $age := humanizeTimeSinceDays ($created) }}
 
 {{ $joined := $member.JoinedAt.Parse }}
@@ -27,7 +24,7 @@
 
 {{ $status := (index (exec "whois" $user.ID).Fields 6).Value }}
 
-{{ $userAvatar := ($member.User.AvatarURL "4096") }}
+{{ $userAvatar := $member.User.AvatarURL "4096" }}
 {{ $serverAvatar := "Not set" }}
 
 {{ if $member.Avatar }}
