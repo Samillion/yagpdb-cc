@@ -25,7 +25,7 @@ GIFs:
 - Login to YAGPDB dashboard. (https://yagpdb.xyz/manage)
 - Navigate: Custom Commands -> Commands -> Create a new custom command.
 - Trigger type: Regex
-- Trigger: `^-(hug|slap|spank|fart)`
+- Trigger: `^-\b(hug|spank|slap|fart)\b`
 - Copy and paste [code](https://raw.githubusercontent.com/Samillion/yagpdb-cc/main/Fun%20Interactions/funinteractions.go) in the response field.
 - Save.
 
