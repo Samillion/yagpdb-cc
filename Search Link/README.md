@@ -7,7 +7,7 @@ It simply generates a link based on the search engine you specify and the keywor
 - Login to YAGPDB dashboard. (https://yagpdb.xyz/manage)
 - Navigate: Custom Commands -> Commands -> Create a new custom command.
 - Trigger type: regex
-- Trigger: `^-\b(google|duck|brave|wiki)\b`
+- Trigger: `^-\b(google|duck|brave|wiki)\b(\s+|\z)`
 - Copy and paste [code](https://raw.githubusercontent.com/Samillion/yagpdb-cc/main/Search%20Link/searchlink.go) in the response field.
 - Save.
 
