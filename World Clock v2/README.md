@@ -28,16 +28,20 @@ Country Timezones: (`$cList`)
 - You can add, adjust or remove items in the list
 - Make sure the name is in lowercase, preferably a single name without space
 
-## Preview
-
-![image](https://github.com/Samillion/yagpdb-cc/assets/17427046/56d9e38f-a492-47c8-9407-c9aa70abb5cf)
-
-![image](https://github.com/Samillion/yagpdb-cc/assets/17427046/55474c0b-30c4-4b73-bb1d-34611f2d2b0d)
-
-![image](https://github.com/Samillion/yagpdb-cc/assets/17427046/6a812335-b3cf-4aad-a283-c00c2d499a43)
-
-![image](https://github.com/Samillion/yagpdb-cc/assets/17427046/37dfae46-e4e6-4fb4-b90d-6e5f191dbb61)
-
-![image](https://github.com/Samillion/yagpdb-cc/assets/17427046/c87b2234-99e4-4170-8e28-116476d82c69)
-
-![image](https://github.com/Samillion/yagpdb-cc/assets/17427046/b752f8a8-9fa2-49c1-84b4-cc0a31f14f9b)
+<table>
+ <tr>
+    <td colspan="2">Preview</td>
+ </tr>
+ <tr>
+    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/56d9e38f-a492-47c8-9407-c9aa70abb5cf" alt=""></td>
+    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/55474c0b-30c4-4b73-bb1d-34611f2d2b0d" alt=""></td>
+ </tr>
+ <tr>
+    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/6a812335-b3cf-4aad-a283-c00c2d499a43" alt=""></td>
+    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/37dfae46-e4e6-4fb4-b90d-6e5f191dbb61" alt=""></td>
+ </tr>
+ <tr>
+    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/c87b2234-99e4-4170-8e28-116476d82c69" alt=""></td>
+    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/b752f8a8-9fa2-49c1-84b4-cc0a31f14f9b" alt=""></td>
+ </tr>
+</table>
