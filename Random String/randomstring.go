@@ -1,6 +1,6 @@
 {{ $lower := "abcdefghijklmnopqrstuvwxyz" }}
-{{ $capital := upper $lower }}
-{{ $alpha := print $lower $capital }}
+{{ $upper := upper $lower }}
+{{ $alpha := print $lower $upper }}
 {{ $num := "0123456789" }}
 {{ $sym := "~!@#$%&*" }}
 {{ $max := 60 }}
@@ -9,7 +9,7 @@
 	"alpha" $alpha
 	"num" $num
 	"sym" $sym
-	"capital" $capital
+	"upper" $upper
 	"lower" $lower
 	"mix" (print $alpha $num $sym)
 }}
@@ -47,8 +47,8 @@
 {{ $result = print "```" $result "```" }}
 
 {{ $explain := print 
-	"**Type Options:**" "\n"
-	"- alpha, lower, capital, num, sym, mix" "\n\n"
+	"**Options:**" "\n"
+	"- alpha, lower, upper, num, sym, mix" "\n\n"
 	"**Character Limits:**" "\n"
 	"- Minimum 1, maximum " $max "\n"
 }}
@@ -56,7 +56,7 @@
 {{ $embed := cembed 
 	"title" "Random String"
 	"description" (print $amount " characters" $result "\n" $explain)
-	"footer" (sdict "text" "Usage: -random <amount:int> <type:str>")
+	"footer" (sdict "text" "Usage: -random <amount:int> <option:str>")
 }}
 
 {{ sendMessage nil $embed }}
