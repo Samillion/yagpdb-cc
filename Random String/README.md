@@ -29,8 +29,12 @@ Usage Examples:
 - Copy and paste [code](https://raw.githubusercontent.com/Samillion/yagpdb-cc/main/Random%20String/randomstring.go) in the response field.
 - Save.
 
-## Preview
-
-![image](https://github.com/Samillion/yagpdb-cc/assets/17427046/1c46add3-8283-4ec7-84d6-38916ef6204f)
-
-![image](https://github.com/Samillion/yagpdb-cc/assets/17427046/27dd265d-7d44-4033-9c93-4638d2a9094b)
+<table>
+ <tr>
+    <td colspan="2">Preview</td>
+ </tr>
+ <tr>
+    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/27dd265d-7d44-4033-9c93-4638d2a9094b"></td>
+    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/1c46add3-8283-4ec7-84d6-38916ef6204f"></td>
+ </tr>
+</table>
