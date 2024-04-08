@@ -8,10 +8,15 @@ A command to post messages in a dedicated dreams channel. The intended use is to
 
 On my Discord server, I have the `#dreams` channel in read-only mode. Meaning that `Send Message` permission is disabled for everyone, to keep the channel free from clutter.
 
-## Explanation and Preview
-![image](https://github.com/Samillion/yagpdb-cc/assets/17427046/1d32d32d-c6d8-47c7-865a-937718ffa59e)
-
-![image](https://github.com/Samillion/yagpdb-cc/assets/17427046/42a4e0c3-e629-4400-b665-8de5659d4dcb)
+<table>
+ <tr>
+    <td colspan="2">Explanation and Preview</td>
+ </tr>
+ <tr>
+    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/1d32d32d-c6d8-47c7-865a-937718ffa59e"></td>
+    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/42a4e0c3-e629-4400-b665-8de5659d4dcb"></td>
+ </tr>
+</table>
 
 ## Setup
 - Login to YAGPDB dashboard. (https://yagpdb.xyz/manage)
