@@ -13,8 +13,8 @@ On my Discord server, I have the `#dreams` channel in read-only mode. Meaning th
     <td colspan="2">Explanation and Preview</td>
  </tr>
  <tr>
-    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/1d32d32d-c6d8-47c7-865a-937718ffa59e"></td>
-    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/42a4e0c3-e629-4400-b665-8de5659d4dcb"></td>
+    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/1d32d32d-c6d8-47c7-865a-937718ffa59e" alt=""></td>
+    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/42a4e0c3-e629-4400-b665-8de5659d4dcb" alt=""></td>
  </tr>
 </table>
 
