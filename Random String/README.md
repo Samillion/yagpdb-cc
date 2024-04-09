@@ -33,12 +33,6 @@ The order of arguments is fluid, meaning all the following scenarios will work
 - Copy and paste [code](https://raw.githubusercontent.com/Samillion/yagpdb-cc/main/Random%20String/randomstring.go) in the response field.
 - Save.
 
-<table>
- <tr>
-    <td colspan="2">Preview</td>
- </tr>
- <tr>
-    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/27dd265d-7d44-4033-9c93-4638d2a9094b" alt=""></td>
-    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/1c46add3-8283-4ec7-84d6-38916ef6204f" alt=""></td>
- </tr>
-</table>
+## Preview
+
+![image](https://github.com/Samillion/yagpdb-cc/assets/17427046/05e0f1c5-795c-459f-b90e-af1169439d13)
