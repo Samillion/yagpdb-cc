@@ -1,12 +1,13 @@
 # Random String
 A simple and basic random string generator with options to control the type of characters in output.
 
-Features:
+#### Output
 - By default it will output a 15 characters mixed random string
-- You can output up to 60 characters
-- You can increase the maximum 60 limit by changing `$max` value
+- You can change that by editing `{{ $default := 15 }}`
+- You can output a maximum of 60 characters
+- You can increase the maximum 60 limit by changing `{{ $max := 60 }}`
 
-Options:
+#### Options
 - `alpha`: Alphabets, lower and upper case `[a-zA-Z]`
 - `lower`: Alphabets, lower case `[a-z]`
 - `upper`: Alphabets, upper case `[A-Z]`
@@ -14,13 +15,16 @@ Options:
 - `sym`: Symbols, by default `~!@#$%&*`
 - `mix`: All the previous types combined (Default)
 
-Usage Examples:
+#### Arguments
+The order of arguments is fluid, meaning all the following scenarios will work
 ```
 -random
 -random 30
 -random num
 -random 40 upper
+-random lower 40
 ```
+
 ## Setup
 - Login to YAGPDB dashboard. (https://yagpdb.xyz/manage)
 - Navigate: Custom Commands -> Commands -> Create a new custom command.
