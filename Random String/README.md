@@ -1,9 +1,9 @@
 # Random String
-A simple and basic random string generator with options to control the type of characters in output.
+A simple and basic random string generator with options to control the type and amount of characters in output.
 
 #### Output
-- By default it will output a 15 characters mixed random string
-- You can change that by editing `{{ $default := 15 }}`
+- By default it will output 15 characters
+- You can increase that by changing `{{ $default := 15 }}`
 - You can output a maximum of 60 characters
 - You can increase the maximum 60 limit by changing `{{ $max := 60 }}`
 
