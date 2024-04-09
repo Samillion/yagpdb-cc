@@ -3,39 +3,48 @@
 {{ $alpha := print $lower $upper }}
 {{ $num := "0123456789" }}
 {{ $sym := "~!@#$%&*" }}
+{{ $default := 15 }}
 {{ $max := 60 }}
 
 {{ $chars := sdict 
 	"alpha" $alpha
+	"lower" $lower
+	"upper" $upper
 	"num" $num
 	"sym" $sym
-	"upper" $upper
-	"lower" $lower
 	"mix" (print $alpha $num $sym)
 }}
 
-{{ $amount := 15 }}
+{{ $amount := $default }}
 {{ $list := $chars.mix }}
 {{ $args := .CmdArgs }}
 
 {{ if $args }}
-	{{ $amount = index $args 0 | toInt }}
+	{{ $first := index $args 0 }}
+	{{ $second := "" }}
+	
 	{{ if gt (len $args) 1 }}
-		{{ $type := index $args 1 | lower }}
-		{{ if $chars.HasKey $type }}
-			{{ $list = $chars.Get $type }}
-		{{ end }}
+		{{ $second = index $args 1 }}
 	{{ end }}
-	{{ if $chars.HasKey (index $args 0 | lower) }}
-		{{ $amount = 15 }}
-		{{ $list = $chars.Get (index $args 0 | lower) }}
+	
+	{{ if reFind `^\d{1,2}$` $first }}
+		{{ $amount = $first | toInt }}
+	{{ else if reFind `^\d{1,2}$` $second }}
+		{{ $amount = $second | toInt }}
+	{{ end }}
+	
+	{{ $list = or ($chars.Get (lower $first)) ($chars.Get (lower $second)) $chars.mix }}
+
+	{{ if eq $first $second }}
+		{{ $amount = $default }}
+		{{ $list = $chars.mix }}
 	{{ end }}
 {{ end }}
 
 {{ $list = split $list "" }}
 
 {{ if or (lt $amount 1) (gt $amount $max) }}
-	{{ $amount = 15 }}
+	{{ $amount = $default }}
 {{ end }}
 
 {{ $result := "" }}
