@@ -1,10 +1,11 @@
+{{ $default := 15 }}
+{{ $max := 60 }}
+
 {{ $lower := "abcdefghijklmnopqrstuvwxyz" }}
 {{ $upper := upper $lower }}
 {{ $alpha := print $lower $upper }}
 {{ $num := "0123456789" }}
 {{ $sym := "~!@#$%&*" }}
-{{ $default := 15 }}
-{{ $max := 60 }}
 
 {{ $chars := sdict 
 	"alpha" $alpha
@@ -55,17 +56,11 @@
 
 {{ $result = print "```" $result "```" }}
 
-{{ $explain := print 
-	"**Options:**" "\n"
-	"- alpha, lower, upper, num, sym, mix" "\n\n"
-	"**Character Limits:**" "\n"
-	"- Minimum 1, maximum " $max "\n"
-}}
-
 {{ $embed := cembed 
 	"title" "Random String"
-	"description" (print $amount " characters" $result "\n" $explain)
-	"footer" (sdict "text" "Usage: -random <amount:int> <option:str>")
+	"description" (print "Generated an output with " $amount " characters" $result)
+	"footer" (sdict "text" "Options: alpha, lower, upper, num, sym, mix")
+	"color" 10530378
 }}
 
 {{ sendMessage nil $embed }}
