@@ -19,25 +19,41 @@
 {{ $amount := $default }}
 {{ $list := $chars.mix }}
 {{ $args := .CmdArgs }}
+{{ $check := cslice }}
 
 {{ if $args }}
-	{{ $first := index $args 0 }}
-	{{ $second := "" }}
+	{{ $list = "" }}
+	{{ range $args }}
+		{{- if reFind `^\d{1,}$` . -}}
+			{{- $amount = . | toInt -}}
+		{{- else -}}
+			{{- $type := lower . -}}
+			{{/* mix has all types, break loop */}}
+			{{- if eq $type "mix" -}}
+				{{- $list = $chars.mix -}}
+				{{- $check = cslice -}}
+				{{- break -}}
+			{{- end -}}
+			{{- if $chars.HasKey $type -}}
+				{{- if not (in $check $type) -}}
+					{{- $list = print $list ($chars.Get $type) -}}
+				{{- end -}}
+				{{- $check = $check.Append $type -}}
+			{{- end -}}
+		{{- end -}}
+	{{- end }}
 	
-	{{ if gt (len $args) 1 }}
-		{{ $second = index $args 1 }}
+	{{/* alpha already has lower and upper, so need to repeat it */}}
+	{{ if and (in $check "alpha") (or (in $check "upper") (in $check "lower")) }}
+		{{ $list = "" }}
+		{{ range $check }}
+			{{- if not (eq . "upper" "lower") -}}
+				{{- $list = print $list ($chars.Get .) -}}
+			{{- end -}}
+		{{- end }}
 	{{ end }}
 	
-	{{ if reFind `^\d{1,2}$` $first }}
-		{{ $amount = $first | toInt }}
-	{{ else if reFind `^\d{1,2}$` $second }}
-		{{ $amount = $second | toInt }}
-	{{ end }}
-	
-	{{ $list = or ($chars.Get (lower $first)) ($chars.Get (lower $second)) $chars.mix }}
-
-	{{ if eq $first $second }}
-		{{ $amount = $default }}
+	{{ if not $list }}
 		{{ $list = $chars.mix }}
 	{{ end }}
 {{ end }}
