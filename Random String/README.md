@@ -16,14 +16,22 @@ A simple and basic random string generator with options to control the type and 
 - `mix`: All the previous types combined (Default)
 
 #### Arguments
-The order of arguments is fluid, meaning all the following scenarios will work
+The order of arguments is fluid and multiple character types can be used. Meaning, all the following scenarios will work:
 ```
 -random
 -random 30
 -random num
 -random 40 upper
 -random lower 40
+-random num lower
+-random sym num 30
+-random 25 upper sym
 ```
+The arguments are processed, for example:
+- If `alpha` and `upper` are used, only `alpha` is processed since it has `upper` already.
+- If `mix` is used with other types (ie: `mix num`), only `mix` will be processed since it has all types already.
+
+This is to ensure the generated output does not favor a specific type based on repeated strings.
 
 ## Setup
 - Login to YAGPDB dashboard. (https://yagpdb.xyz/manage)
