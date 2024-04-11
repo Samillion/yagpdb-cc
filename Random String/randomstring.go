@@ -19,62 +19,71 @@
 {{ $amount := $default }}
 {{ $list := $chars.mix }}
 {{ $args := .CmdArgs }}
-{{ $check := cslice }}
+{{ $check := cslice "mix" }}
 
 {{ if $args }}
 	{{ $list = "" }}
+	{{ $check = cslice }}
 	{{ range $args }}
 		{{- if reFind `^\d{1,}$` . -}}
 			{{- $amount = . | toInt -}}
 		{{- else -}}
 			{{- $type := lower . -}}
-			{{/* mix has all types, break loop */}}
+			{{/* mix has all types, no need for other args */}}
 			{{- if eq $type "mix" -}}
 				{{- $list = $chars.mix -}}
-				{{- $check = cslice -}}
+				{{- $check = cslice "mix" -}}
 				{{- break -}}
 			{{- end -}}
 			{{- if $chars.HasKey $type -}}
 				{{- if not (in $check $type) -}}
 					{{- $list = print $list ($chars.Get $type) -}}
+					{{- $check = $check.Append $type -}}
 				{{- end -}}
-				{{- $check = $check.Append $type -}}
 			{{- end -}}
 		{{- end -}}
 	{{- end }}
 	
-	{{/* alpha already has lower and upper, so need to repeat it */}}
+	{{/* alpha already has lower and upper */}}
 	{{ if and (in $check "alpha") (or (in $check "upper") (in $check "lower")) }}
 		{{ $list = "" }}
+		{{ $new := cslice }}
 		{{ range $check }}
-			{{- if not (eq . "upper" "lower") -}}
+			{{- if not (or (eq . "upper" "lower") (in $new .)) -}}
 				{{- $list = print $list ($chars.Get .) -}}
+				{{- $new = $new.Append . -}}
 			{{- end -}}
 		{{- end }}
+		{{ $check = $new }}
 	{{ end }}
 	
 	{{ if not $list }}
 		{{ $list = $chars.mix }}
+		{{ $check = cslice "mix" }}
 	{{ end }}
 {{ end }}
 
 {{ $list = split $list "" }}
+{{ $result := "" }}
 
 {{ if or (lt $amount 1) (gt $amount $max) }}
 	{{ $amount = $default }}
 {{ end }}
 
-{{ $result := "" }}
-
 {{ range (seq 0 $amount) }}
     {{- $result = print $result (index (shuffle $list) 0) -}}
 {{- end }}
 
-{{ $result = print "```" $result "```" }}
+{{ $message := print 
+	"```" $result "```" "\n"
+	"**Generated output:**" "\n"
+	"- Count: " $amount " characters" "\n" 
+	"- Type: " (joinStr ", " $check.StringSlice) "\n"
+}}
 
 {{ $embed := cembed 
 	"title" "Random String"
-	"description" (print "Generated an output with " $amount " characters" $result)
+	"description" $message
 	"footer" (sdict "text" "Options: alpha, lower, upper, num, sym, mix")
 	"color" 10530378
 }}
