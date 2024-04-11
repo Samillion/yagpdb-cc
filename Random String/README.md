@@ -43,4 +43,9 @@ This is to ensure the generated output does not favor a specific type based on r
 
 ## Preview
 
-![image](https://github.com/Samillion/yagpdb-cc/assets/17427046/05e0f1c5-795c-459f-b90e-af1169439d13)
+<table>
+  <tr>
+    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/4127ef50-e3a9-4254-ba3c-000bd97ce8af" alt="Preview"></td>
+    <td><img src="https://github.com/Samillion/yagpdb-cc/assets/17427046/52f47026-fe2f-4432-a477-63b42d845d92" alt="Preview"></td>
+  </tr>
+</table>
