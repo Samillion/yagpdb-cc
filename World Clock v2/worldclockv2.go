@@ -122,8 +122,11 @@
 }}
 
 {{ $cmd := .Cmd }}
-{{ $title := ":alarm_clock:  World Clock" }}
-{{ $usage := print "Usage: " $cmd " help" }}
+{{ $args := .CmdArgs }}
+{{ $embed := sdict 
+	"title" ":alarm_clock:  World Clock" 
+	"footer" (sdict "text" (print "Usage: " $cmd " help"))
+}}
 
 {{ define "reCountry" }}
 	{{- if . -}}
@@ -140,8 +143,9 @@
 	{{- end -}}
 {{ end }}
 
-{{ if ge (len .Args) 2 }}
-	{{ if eq (lower (index .CmdArgs 0)) "help" }}
+{{ if $args }}
+	{{ $in := index $args 0 | lower }}
+	{{ if eq $in "help" }}
 		{{ $desc := print 
 			"**Usage:**" "\n"
 			"```" $cmd " ```"
@@ -157,13 +161,8 @@
 			"```" $cmd " Italy Japan" "\n" "Compares time difference between Italy and Japan.```"
 			"```" $cmd " 18 \"US (Eastern)\"" "\n" "For countries with space in their label, wrap it in quotes.```"
 		}}
-		{{ $embed := cembed 
-			"title" $title
-			"description" $desc
-		}}
-		{{ sendMessage nil $embed }}
-		{{ return }}
-	{{ else if eq (lower (index .CmdArgs 0)) "list" }}
+		{{ $embed.Set "description" $desc }}
+	{{ else if eq $in "list" }}
 		{{ $desc := "" }}
 		{{ $count := 0 }}
 
@@ -177,16 +176,11 @@
 		{{- end }}
 
 		{{ $desc = print $desc "\n\n" "**Total:** " $count }}
-		{{ $embed := cembed 
-			"title" "Supported Countries"
-			"description" $desc
-			"footer" (sdict "text" $usage)
-		}}
-		{{ sendMessage nil $embed }}
-		{{ return }}
-	{{ else if eq (len .Args) 3 }}
-		{{ $first := (lower (index .CmdArgs 0)) }}
-		{{ $second := (lower (index .CmdArgs 1)) }}
+		{{ $embed.Set "title" ":earth_africa:  Supported Countries" }}
+		{{ $embed.Set "description" $desc }}
+	{{ else if eq (len $args) 2 }}
+		{{ $first := index .CmdArgs 0 | lower }}
+		{{ $second := index .CmdArgs 1 | lower }}
 
 		{{ if and (reFind `[\D]` $first) (reFind `[\D]` $second) }}
 			{{ if or (and (not ($clocks.HasKey $first)) (not ($cList.HasKey $first))) (and (not ($clocks.HasKey $second)) (not ($cList.HasKey $second))) }}
@@ -203,8 +197,8 @@
 			{{ $first = currentTime.In (loadLocation $first) }}
 			{{ $second = currentTime.In (loadLocation $second) }}
 
-			{{ $fiComp := (newDate (sub $first.Year 1) $first.Month $first.Day $first.Hour $first.Minute $first.Second) }}
-			{{ $seComp := (newDate (sub $second.Year 1) $second.Month $second.Day $second.Hour $second.Minute $second.Second) }}
+			{{ $fiComp := newDate $first.Year $first.Month $first.Day $first.Hour (sub $first.Minute 1) $first.Second }}
+			{{ $seComp := newDate $second.Year $second.Month $second.Day $second.Hour (sub $second.Minute 1) $second.Second }}
 
 			{{ $diff := $fiComp.Sub $seComp }}
 
@@ -223,13 +217,7 @@
 				"Current time in **" $seOut "** is **" ($second.Format "Monday 3:04 PM") "**\n\n" 
 				"There is **" $diff "** difference between **" $fiOut "** and **" $seOut "**."
 			}}
-			{{ $embed := cembed 
-				"title" $title
-				"description" $desc
-				"footer" (sdict "text" $usage)
-			}}
-			{{ sendMessage nil $embed }}
-			{{ return }}
+			{{ $embed.Set "description" $desc }}
 		{{ else if and (reFind `[\d]` $first) (reFind `[\D]` $second) }}
 			{{ if and (not ($clocks.HasKey $second)) (not ($cList.HasKey $second)) }}
 				{{ sendMessage nil "Country needs to be from the supported countries list." }}
@@ -237,7 +225,7 @@
 			{{ end }}
 
 			{{ $first = toInt $first }}
-			{{ if or (lt $first 0 ) (gt $first 24)  }}
+			{{ if or (lt $first 0 ) (gt $first 24) }}
 				{{ $first = 0 }}
 			{{ end }}
 
@@ -245,33 +233,22 @@
 			{{ $desc := print "Listing time results to match **" $cOut "** at **" $first ":00** (24h) for different timezones." }}
 			{{ $second = or ($clocks.Get $second) ($cList.Get $second) }}
 
-			{{ $embed := sdict
-				"title" $title
-				"fields" cslice
-				"footer" (sdict "text" $usage)
-			}}
+			{{ $embed.Set "fields" cslice }}
 			{{ $embed.Set "description" $desc }}
 
 			{{ range $country, $timezone := $clocks }}
 				{{- $time := currentTime.In (loadLocation $timezone) -}}
-				{{- $stamp := (newDate $time.Year $time.Month $time.Day $first 0 0 $second) -}}
+				{{- $stamp := newDate $time.Year $time.Month $time.Day $first 0 0 $second -}}
 				{{- $time = $stamp.In (loadLocation $timezone) -}}
 				{{- $format := print ($time.Format "Monday 3:04 PM") -}}
 				
 				{{- $country = execTemplate "reCountry" $country -}}
 				
-				{{- $embed.fields.Append (sdict
-					"name" $country
-					"value" $format
-					"inline" true
-				) | $embed.Set "fields" -}}
+				{{- $embed.fields.Append (sdict "name" $country "value" $format "inline" true) | $embed.Set "fields" -}}
 			{{- end }}
-
-			{{ sendMessage nil (cembed $embed) }}
-			{{ return }}
 		{{ end }}
-	{{ else if eq (len .Args) 2 }}
-		{{ $input := (lower (index .CmdArgs 0)) }}
+	{{ else if eq (len $args) 1 }}
+		{{ $input := index .CmdArgs 0 | lower }}
 
 		{{ if and (not ($clocks.HasKey $input)) (not ($cList.HasKey $input)) }}
 			{{ sendMessage nil "Country needs to be from the supported countries list." }}
@@ -282,36 +259,23 @@
 		{{ $curr := currentTime.In (loadLocation $zone) }}
 		{{ $curr = print ($curr.Format "Monday 3:04 PM") }}
 
-		{{ $country := (lower (index .CmdArgs 0)) }}
-		{{ $country = execTemplate "reCountry" $country }}
-
+		{{ $country := execTemplate "reCountry" $input }}
 		{{ $desc := print "Current time in **" $country "** is **" $curr "**" }}
-
-		{{ $embed := cembed 
-			"title" $title
-			"description" $desc
-			"footer" (sdict "text" $usage)
-		}}
-		{{ sendMessage nil $embed }}
-		{{ return }}
+		{{ $embed.Set "description" $desc }}
 	{{ end }}
+{{ else }}
+	{{ $embed.Set "fields" cslice }}
+
+	{{ range $country, $timezone := $clocks }}
+		{{- $time := currentTime.In (loadLocation $timezone) -}}
+		{{- $format := print ($time.Format "Monday 3:04 PM") -}}
+		{{- $country = execTemplate "reCountry" $country -}}
+		{{- $embed.fields.Append (sdict
+			"name" $country
+			"value" $format
+			"inline" true
+		) | $embed.Set "fields" -}}
+	{{- end }}
 {{ end }}
-
-{{ $embed := sdict
-	"title" $title
-	"fields" cslice
-	"footer" (sdict "text" $usage)
-}}
-
-{{ range $country, $timezone := $clocks }}
-	{{- $time := currentTime.In (loadLocation $timezone) -}}
-	{{- $format := print ($time.Format "Monday 3:04 PM") -}}
-	{{- $country = execTemplate "reCountry" $country -}}
-	{{- $embed.fields.Append (sdict
-		"name" $country
-		"value" $format
-		"inline" true
-	) | $embed.Set "fields" -}}
-{{- end }}
 
 {{ sendMessage nil (cembed $embed) }}
