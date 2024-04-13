@@ -241,9 +241,7 @@
 				{{- $stamp := newDate $time.Year $time.Month $time.Day $first 0 0 $second -}}
 				{{- $time = $stamp.In (loadLocation $timezone) -}}
 				{{- $format := print ($time.Format "Monday 3:04 PM") -}}
-				
 				{{- $country = execTemplate "reCountry" $country -}}
-				
 				{{- $embed.fields.Append (sdict "name" $country "value" $format "inline" true) | $embed.Set "fields" -}}
 			{{- end }}
 		{{ end }}
@@ -258,7 +256,6 @@
 		{{ $zone := or ($clocks.Get $input) ($cList.Get $input) }}
 		{{ $curr := currentTime.In (loadLocation $zone) }}
 		{{ $curr = print ($curr.Format "Monday 3:04 PM") }}
-
 		{{ $country := execTemplate "reCountry" $input }}
 		{{ $desc := print "Current time in **" $country "** is **" $curr "**" }}
 		{{ $embed.Set "description" $desc }}
@@ -270,11 +267,7 @@
 		{{- $time := currentTime.In (loadLocation $timezone) -}}
 		{{- $format := print ($time.Format "Monday 3:04 PM") -}}
 		{{- $country = execTemplate "reCountry" $country -}}
-		{{- $embed.fields.Append (sdict
-			"name" $country
-			"value" $format
-			"inline" true
-		) | $embed.Set "fields" -}}
+		{{- $embed.fields.Append (sdict "name" $country "value" $format "inline" true) | $embed.Set "fields" -}}
 	{{- end }}
 {{ end }}
 
