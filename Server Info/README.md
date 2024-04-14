@@ -1,5 +1,5 @@
 # Server Info
-A simple command to view general server info. This is a fork of [Server Info](https://yagpdb-cc.github.io/info/server) command by jo3-l to suit my use case.
+A simple command to view general information related to your Discord server. This is a fork of [Server Info](https://yagpdb-cc.github.io/info/server) command by jo3-l to suit my use case.
 
 ## Setup
 - Login to YAGPDB dashboard. (https://yagpdb.xyz/manage)
