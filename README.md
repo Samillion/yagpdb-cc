@@ -20,7 +20,7 @@ It's mostly specific use case scenarios, random coding out of boredom or to do t
 - [User Info](./User%20Info)
   - A command to view general information about a user on your Discord server.
 - [World Clock v2](./World%20Clock%20v2)
-  - A command to view current time, compare time between countries or view a specific time from different regions based on a country's specific time.
+  - A command to view current time of a country, compare time between countries or view a specific time from different regions based on a country's specific time.
 - [Skyforge MMO Info](https://github.com/Samillion/skyforge-yagpdb)
   - Custom commands that provide useful information about the MMO game [Skyforge](https://sf.my.games/en)
 
