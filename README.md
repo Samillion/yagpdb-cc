@@ -5,8 +5,8 @@ A few custom commands I've made for [YAGPDB](https://yagpdb.xyz/) Discord bot to
 It's mostly specific use case scenarios, random coding out of boredom or to do things within Discord instead of having to do it on a browser because I'm lazy.
 
 ## Custom Commands
-- [Dreams](./Dreams)
-  - A command to post messages in a dedicated dreams channel. The intended use is to post dreams you have when sleeping, though it can be used for dreams as in "hopes" as well.
+- [Dreams & Confessions](./Dreams)
+  - A command to post messages in a dedicated dreams and confessions channel, the purpose is to confess something or to share an interesting dream you had.
 - [Fancy Text](./Fancy%20Text)
   - A simple command to convert any text into 𝐹𝒶𝓃𝒸𝓎 𝓉𝑒𝓍𝓉 easily
 - [Fun Interactions](./Fun%20Interactions)
