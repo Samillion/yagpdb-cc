@@ -12,15 +12,15 @@ It's mostly specific use case scenarios, random coding out of boredom or to do t
 - [Fun Interactions](./Fun%20Interactions)
   - As basic as it gets, and as seen on many bots. `-hug @user`, `-slap @user`, `-spank @user`, `-fart @user` will generate an embed with a humorous GIF from a list.
 - [Random String](./Random%20String)
-  - A simple and basic random string generator with options to control the type and amount of characters in output.
+  - A random string generator with options to control the type and amount of characters in output.
 - [Search Link](./Search%20Link)
   - A search link generator for Google, Duckduckgo, Brave and Wikipedia.
 - [Server Info](./Server%20Info)
-  - A simple command to view general server related information.
+  - A simple command to view general information related to your Discord server.
 - [User Info](./User%20Info)
-  - A command to display a specific Discord user's info in the server.
+  - A command to view general information about a user on your Discord server.
 - [World Clock v2](./World%20Clock%20v2)
-  - A forked version of [World Clock](https://yagpdb-cc.github.io/utilities/world-clock) command made by jo3-l with more options.
+  - A command to view current time, compare time between countries or view a specific time from different regions based on a country's specific time.
 - [Skyforge MMO Info](https://github.com/Samillion/skyforge-yagpdb)
   - Custom commands that provide useful information about the MMO game [Skyforge](https://sf.my.games/en)
 
