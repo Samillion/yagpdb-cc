@@ -1,5 +1,7 @@
 # World Clock v2
-This is an "advanced" version of the [World Clock](https://yagpdb-cc.github.io/utilities/world-clock) command made by [jo3-l](https://github.com/jo3-l). It is honestly a complete overkill, but it services my lazy side on that rare time I want this information and I don't have to open my browser for it.
+A command to view current time of a country, compare time between countries or view a specific time from different regions based on a country's specific time.
+
+This is a fork of the simpler command [World Clock](https://yagpdb-cc.github.io/utilities/world-clock)  by [jo3-l](https://github.com/jo3-l).
 
 Features:
 - By default it will output time for regions that cover most of the globe
